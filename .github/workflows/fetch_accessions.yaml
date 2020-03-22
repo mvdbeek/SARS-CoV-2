@@ -20,6 +20,8 @@ jobs:
         key: pip-cache-${{ matrix.python-version }}-${{ hashFiles('genomics/4-Variation/requirements.txt') }}
     - name: Install pysradb
       run: pip install https://github.com/mvdbeek/pysradb/archive/respect_retry_limit.zip
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
     - name: Fetch accessions
       run: ./fetch_sra_acc.sh
       working-directory: ./genomics/4-Variation/
